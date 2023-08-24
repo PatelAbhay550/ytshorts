@@ -149,6 +149,20 @@ html {
     border-radius: 50%;
     background-color: aqua;
 }
+.popforbig h1{
+    font-size: 6vw;
+    margin-top: 10%;
+    margin-left: 40%;
+}
+.popforbig p{
+    margin-left: 0%;
+    text-align: center;
+}
+@media (min-width:450px) {
+    .popforbig{
+        display: block;
+    }
+}
 
 .subscribe-btn button {
     padding: 4px 10px;
