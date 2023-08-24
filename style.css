@@ -162,6 +162,9 @@ html {
     .popforbig{
         display: block;
     }
+    .main{
+        display:none;
+    }
 }
 
 .subscribe-btn button {
