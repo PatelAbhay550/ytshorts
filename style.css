@@ -150,6 +150,19 @@ html {
     border-radius: 50%;
     background-color: aqua;
 }
+.popforbig{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #111;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 999999;
+    
+}
 .popforbig h1{
     font-size: 6vw;
     margin-top: 10%;
