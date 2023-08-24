@@ -182,6 +182,17 @@ body {
         display:none;
     }
 }
+@media (max-width:450px) {
+    .popforbig{
+        display: none;
+    }
+    .main{
+        display:block;
+    }
+    .video{
+        display:block;
+    }
+}
 
 .subscribe-btn button {
     padding: 4px 10px;
