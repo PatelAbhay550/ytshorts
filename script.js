@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <p>${video.user.name}</p>
                         </div>
                         <div class="credentials">
-                            <div class="img-chnl"><img src="" alt=""></div>
+                            <div class="img-chnl" style="object-fit: cover;overflow: hidden;"><img src="${video.image}" style="width: 100%;height: 100%;" alt=""></div>
                             <div class="channel-name">
                                 <p>Abhay Patel</p>
                             </div>
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                             <div class="img"><img src="" alt=""></div>
                         </div>
-                    </div>
+                    </div><input type="range" name="length" min="0" value="0" max="100" id="vidlength">
                     <video>
                         <source src="${videoUrl}" type="video/mp4">
                         Your browser does not support the video tag.
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     likeIcons.forEach((icon, index) => {
         if (localStorage.getItem(`like${index}`)) {
-            icon.style.color = "#FF0000"; // Set red color
+            icon.style.color = "#ff00f7"; // Set red color
         }
     });
     
@@ -112,12 +112,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const openComments = () => {
         commentsSection.classList.add("show-comments");
-        document.body.style.overflowY = "hidden"; // Disable scrolling
+        document.querySelector(".main").overflow = "hidden"; // Disable scrolling
     };
 
     const closeComments = () => {
         commentsSection.classList.remove("show-comments");
-        document.body.style.overflow = "auto"; // Enable scrolling
+        document.querySelector(".main").style.overflowy = "auto"; // Enable scrolling
     };
 
     commentsBtns.forEach(element => {
@@ -144,10 +144,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    const video = document.querySelector("video");
+    const videos = document.querySelectorAll("video");
     const onPlayIcon = document.getElementById("onplay");
     const onPauseIcon = document.getElementById("onpause");
-
+    videos.forEach(video=>{
     video.addEventListener("play", () => {
         onPlayIcon.style.display = "block";
         onPlayIcon.style.transform = "scale(3)";
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(() => {
             onPauseIcon.style.transform = "scale(0)";
-        }, 1000);
+        }, 500);
     });
 
     video.addEventListener("click", () => {
@@ -175,4 +175,18 @@ document.addEventListener("DOMContentLoaded", function () {
             video.pause();
         }
     });
+});
+document.querySelector(".main").style.overflow = "auto";
+const sliders = document.querySelectorAll("#vidlength");
+
+videos.forEach((video, index) => {
+    video.addEventListener("loadedmetadata", () => {
+        sliders[index].max = video.duration;
+        sliders[index].value = 0;
+    });
+
+    video.addEventListener("timeupdate", () => {
+        sliders[index].value = video.currentTime;
+    });
+                });
 });
